@@ -1,0 +1,4 @@
+{"ts": "2026-10-20T07:00:00.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "echo 'sandbox probe initial test'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-20T07:00:01.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "python -m pip install --upgrade pip", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-20T07:00:02.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "cat /etc/shadow || rm -rf /", "decision": "block", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-20T07:00:03.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "python -c 'print(\"baseline clean\")'", "decision": "allow", "execution_target": "celesto_sandbox"}
