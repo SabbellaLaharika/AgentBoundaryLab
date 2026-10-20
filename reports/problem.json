@@ -1,0 +1,6 @@
+{
+  "who": "DevSecOps engineers and platform security teams at software companies who must evaluate untrusted third-party packages, scripts, and dependencies before deploying them to production infrastructure.",
+  "agent_work": "The agent installs untrusted packages and executes suspicious scripts inside an isolated Celesto microVM sandbox, monitors all system calls, file access, and outbound network attempts, then generates a structured security audit report with containment evidence.",
+  "proof_output": "A structured security_audit_report.json containing risk verdict, blocked commands log, and network exfiltration attempt evidence.",
+  "idea_source": "idea_bank"
+}

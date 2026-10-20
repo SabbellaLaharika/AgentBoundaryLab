@@ -1,0 +1,19 @@
+{
+  "capabilities": [
+    {
+      "id": "snapshots",
+      "why": "Snapshots allow the agent to checkpoint the sandbox state before executing a risky or potentially destructive command. If the command triggers a failure at step 7 of 10 or causes irreversible side-effects, the agent can instantly roll back to the pre-risk snapshot instead of crashing and leaving an orphaned machine. This makes failure recovery deterministic and safe.",
+      "evidence_path": "src/recovery.py"
+    },
+    {
+      "id": "safety_hooks",
+      "why": "Safety hooks are Python callbacks that run before each command reaches the guest VM. Unlike a system prompt instruction that the LLM can be tricked into ignoring through prompt injection, a safety hook is enforced at the infrastructure layer and cannot be bypassed by untrusted content. This is the primary mechanism that ensures destructive commands like rm -rf or secret exfiltration attempts are blocked before execution.",
+      "evidence_path": "src/audit.py"
+    },
+    {
+      "id": "network_policy",
+      "why": "Network policy restricts outbound internet access from the guest sandbox, preventing prompt-injected payloads from exfiltrating environment variables or API keys to attacker-controlled servers. By default internet is on; switching it off or to an allowlist ensures that even if the agent is tricked by a poisoned document or webpage, no sensitive data can leave the sandbox boundary.",
+      "evidence_path": "src/lifecycle.py"
+    }
+  ]
+}
