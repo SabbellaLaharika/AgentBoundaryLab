@@ -1,0 +1,171 @@
+{
+  "run_count": 20,
+  "success_rate": 0.85,
+  "median_wall_clock_s": 13.8052,
+  "p90_wall_clock_s": 14.2312,
+  "median_boot_to_ready_s": 2.3266,
+  "total_cost_usd": 0.0032,
+  "postmortem_path": "reports/postmortem.md",
+  "runs": [
+    {
+      "sandbox_name": "sbx-evalrun05",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 9.2164,
+      "boot_to_ready_s": 2.3171,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun12",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 9.22,
+      "boot_to_ready_s": 2.3103,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun13",
+      "fresh": true,
+      "success": false,
+      "wall_clock_s": 9.2399,
+      "boot_to_ready_s": 2.3265,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun06",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 9.2497,
+      "boot_to_ready_s": 2.3107,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun20",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 9.2828,
+      "boot_to_ready_s": 2.3253,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun19",
+      "fresh": true,
+      "success": false,
+      "wall_clock_s": 9.3117,
+      "boot_to_ready_s": 2.3276,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun07",
+      "fresh": true,
+      "success": false,
+      "wall_clock_s": 9.6189,
+      "boot_to_ready_s": 2.7384,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun14",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 9.7,
+      "boot_to_ready_s": 2.7564,
+      "cost_usd": 0.0001
+    },
+    {
+      "sandbox_name": "sbx-evalrun04",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 13.7419,
+      "boot_to_ready_s": 2.3213,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun11",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 13.7862,
+      "boot_to_ready_s": 2.3268,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun18",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 13.8243,
+      "boot_to_ready_s": 2.3165,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun03",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.1455,
+      "boot_to_ready_s": 2.316,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun08",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.1493,
+      "boot_to_ready_s": 6.8578,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun02",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.1715,
+      "boot_to_ready_s": 2.3331,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun09",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.2087,
+      "boot_to_ready_s": 2.3229,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun15",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.2104,
+      "boot_to_ready_s": 6.8685,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun17",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.2207,
+      "boot_to_ready_s": 2.3326,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun10",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.2312,
+      "boot_to_ready_s": 2.343,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun16",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.2391,
+      "boot_to_ready_s": 2.3233,
+      "cost_usd": 0.0002
+    },
+    {
+      "sandbox_name": "sbx-evalrun01",
+      "fresh": true,
+      "success": true,
+      "wall_clock_s": 14.5644,
+      "boot_to_ready_s": 7.3108,
+      "cost_usd": 0.0002
+    }
+  ]
+}
