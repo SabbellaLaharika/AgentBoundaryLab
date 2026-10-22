@@ -1,0 +1,11 @@
+{
+  "cleanup_on_success": true,
+  "cleanup_on_failure": true,
+  "cleanup_on_interrupt": true,
+  "sandbox_names": [
+    "sbx-seeddemo1",
+    "sbx-lifecycle01",
+    "sbx-lifecycle02",
+    "sbx-lifecycle03"
+  ]
+}

@@ -2,3 +2,9 @@
 {"ts": "2026-10-20T07:00:01.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "python -m pip install --upgrade pip", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-20T07:00:02.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "cat /etc/shadow || rm -rf /", "decision": "block", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-20T07:00:03.000000+00:00", "sandbox_name": "sbx-seeddemo1", "command": "python -c 'print(\"baseline clean\")'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:11:51.373421+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:12:05.108563+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:12:18.861785+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:13:53.165559+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:14:06.841944+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:14:20.574400+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
