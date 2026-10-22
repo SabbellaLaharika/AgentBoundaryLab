@@ -64,3 +64,6 @@
 {"ts": "2026-10-22T14:58:00.244853+00:00", "sandbox_name": "sbx-evalrun19", "command": "python -c 'raise MemoryError(\"Transient heap pressure during AST parse\")'", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T14:58:16.630494+00:00", "sandbox_name": "sbx-evalrun20", "command": "python -c 'import sys, platform; print(platform.platform())'", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T14:58:19.042677+00:00", "sandbox_name": "sbx-evalrun20", "command": "python -m pip check && python -c 'print(\"Audit completed clean\")'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:08:02.524177+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:08:21.240734+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:08:39.880672+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
