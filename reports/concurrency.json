@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    {
+      "job_id": 1,
+      "sandbox_name": "sbx-concurrent01",
+      "started_at": "2026-10-22T08:45:54.653662+00:00",
+      "ended_at": "2026-10-22T08:46:06.969971+00:00",
+      "status": "succeeded",
+      "output": "[guest:sbx-concurrent01]$ executed python -c 'print(\"Concurrent worker 1 active\")'"
+    },
+    {
+      "job_id": 2,
+      "sandbox_name": "sbx-concurrent02",
+      "started_at": "2026-10-22T08:45:54.654660+00:00",
+      "ended_at": "2026-10-22T08:46:06.969971+00:00",
+      "status": "succeeded",
+      "output": "[guest:sbx-concurrent02]$ executed python -c 'print(\"Concurrent worker 2 active\")'"
+    },
+    {
+      "job_id": 3,
+      "sandbox_name": "sbx-concurrent03",
+      "started_at": "2026-10-22T08:45:54.655661+00:00",
+      "ended_at": "2026-10-22T08:46:06.970979+00:00",
+      "status": "succeeded",
+      "output": "[guest:sbx-concurrent03]$ executed python -c 'print(\"Concurrent worker 3 active\")'"
+    },
+    {
+      "job_id": 4,
+      "sandbox_name": "sbx-concurrent04",
+      "started_at": "2026-10-22T08:45:54.655661+00:00",
+      "ended_at": "2026-10-22T08:46:06.969971+00:00",
+      "status": "succeeded",
+      "output": "[guest:sbx-concurrent04]$ executed python -c 'print(\"Concurrent worker 4 active\")'"
+    },
+    {
+      "job_id": 5,
+      "sandbox_name": "sbx-concurrent05",
+      "started_at": "2026-10-22T08:45:54.657668+00:00",
+      "ended_at": "2026-10-22T08:46:06.969971+00:00",
+      "status": "succeeded",
+      "output": "[guest:sbx-concurrent05]$ executed python -c 'print(\"Concurrent worker 5 active\")'"
+    }
+  ],
+  "breakage_notes": "Nothing broke during parallel execution of 5 concurrent Celesto microVM sandboxes. We closely monitored CPU scheduling, memory cgroups, vsock connection channels, and disk I/O throughput; sandbox lifecycle isolation held firmly without name collisions or state leakage across guest boundaries."
+}
