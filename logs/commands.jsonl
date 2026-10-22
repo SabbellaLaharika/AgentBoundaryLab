@@ -18,3 +18,5 @@
 {"ts": "2026-10-22T07:30:50.446567+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "command": "celesto snapshot rollback --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T07:30:52.735628+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "command": "python -m pip install --upgrade safe-parser && patch -p1 < patch.diff", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T07:30:55.027260+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "command": "python /workspace/detonation/repo/exploit_repro.py --verify-safe", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T08:32:17.982820+00:00", "sandbox_name": "sbx-containment01", "command": "echo 'Agent pre-attack check'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T08:32:20.259652+00:00", "sandbox_name": "sbx-containment01", "command": "cat /etc/shadow || rm -rf / --no-preserve-root", "decision": "block", "execution_target": "celesto_sandbox"}
