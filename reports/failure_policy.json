@@ -1,0 +1,7 @@
+{
+  "failed_step": 7,
+  "total_steps": 10,
+  "policy": "rollback",
+  "rationale": "When an autonomous agent triggers an unpredictable exploit payload or volatile test failure at step 7 of 10 during vulnerability reproduction, the guest microVM filesystem and memory are tainted by corrupted binary artifacts and unhandled exceptions. A plain resume is dangerous because it preserves unvalidated corrupt state on the root disk. Starting fresh requires re-cloning the repository, re-compiling heavy dependencies, and re-running all preflight checks, incurring significant latency and monetary cost ($0.015/hr compute burned needlessly). Rollback via Celesto hardware-isolated snapshot restored from step 6 provides the ideal trade-off: it guarantees bit-for-bit clean state restoration in under 100 milliseconds without repeating steps 1 through 6, ensuring deterministic recovery and zero state leakage.",
+  "trace_path": "reports/failure_trace.jsonl"
+}

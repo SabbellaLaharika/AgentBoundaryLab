@@ -1,0 +1,24 @@
+{"ts": "2026-10-22T07:30:27.169331+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "pipeline_started", "total_steps": 10, "initial_target": "celesto_sandbox"}
+{"ts": "2026-10-22T07:30:32.198672+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 1, "name": "initialize_guest_environment", "command": "mkdir -p /workspace/detonation && cd /workspace/detonation"}
+{"ts": "2026-10-22T07:30:34.473396+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 1, "name": "initialize_guest_environment"}
+{"ts": "2026-10-22T07:30:34.474453+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 2, "name": "clone_untrusted_repository", "command": "git clone --depth 1 https://github.com/example-vuln/pkg /workspace/detonation/repo"}
+{"ts": "2026-10-22T07:30:36.757200+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 2, "name": "clone_untrusted_repository"}
+{"ts": "2026-10-22T07:30:36.757725+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 3, "name": "install_isolated_dependencies", "command": "pip install --no-cache-dir -r /workspace/detonation/repo/requirements.txt"}
+{"ts": "2026-10-22T07:30:39.036860+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 3, "name": "install_isolated_dependencies"}
+{"ts": "2026-10-22T07:30:39.038608+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 4, "name": "compile_static_analysis_rules", "command": "python -m semgrep --config=auto --dry-run"}
+{"ts": "2026-10-22T07:30:41.312732+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 4, "name": "compile_static_analysis_rules"}
+{"ts": "2026-10-22T07:30:41.313259+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 5, "name": "execute_preflight_lint_checks", "command": "flake8 /workspace/detonation/repo --select=E9,F63,F7,F82"}
+{"ts": "2026-10-22T07:30:43.578013+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 5, "name": "execute_preflight_lint_checks"}
+{"ts": "2026-10-22T07:30:43.578608+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 6, "name": "checkpoint_pre_detonation_snapshot", "command": "celesto snapshot create --id=snap-pre-detonation-v1"}
+{"ts": "2026-10-22T07:30:45.863097+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 6, "name": "checkpoint_pre_detonation_snapshot"}
+{"ts": "2026-10-22T07:30:45.863646+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 7, "name": "detonate_volatile_exploit_payload", "command": "python /workspace/detonation/repo/exploit_repro.py --detonate"}
+{"ts": "2026-10-22T07:30:48.162869+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_failed", "step": 7, "name": "detonate_volatile_exploit_payload", "error": "SimulatedVolatileExploitCorruption: SegmentationFault in guest binary parser", "status": "MidTaskFailure"}
+{"ts": "2026-10-22T07:30:48.163396+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "policy_applied", "policy": "rollback", "failed_step": 7, "total_steps": 10, "snapshot_id": "snap-pre-detonation-v1", "restored_state": "step_6_checkpoint"}
+{"ts": "2026-10-22T07:30:48.163939+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 8, "name": "rollback_to_snapshot_state", "command": "celesto snapshot rollback --id=snap-pre-detonation-v1"}
+{"ts": "2026-10-22T07:30:50.447810+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "rollback_restored", "snapshot_id": "snap-pre-detonation-v1", "guest_health": "clean"}
+{"ts": "2026-10-22T07:30:50.448350+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 9, "name": "apply_mitigation_and_sanitize", "command": "python -m pip install --upgrade safe-parser && patch -p1 < patch.diff"}
+{"ts": "2026-10-22T07:30:52.736132+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 9, "name": "apply_mitigation_and_sanitize"}
+{"ts": "2026-10-22T07:30:52.736658+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_started", "step": 10, "name": "verify_clean_reproduction_and_export", "command": "python /workspace/detonation/repo/exploit_repro.py --verify-safe"}
+{"ts": "2026-10-22T07:30:55.028469+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "step_succeeded", "step": 10, "name": "verify_clean_reproduction_and_export"}
+{"ts": "2026-10-22T07:30:55.028997+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "pipeline_completed", "status": "succeeded", "steps_executed": 10}
+{"ts": "2026-10-22T07:30:59.590555+00:00", "sandbox_name": "sbx-resilienceec56e819ea", "event": "sandbox_deleted", "state": "deleted", "orphaned": false}
