@@ -30,9 +30,20 @@ app = FastAPI(
 # Custom exception handler to return 400 instead of 422 for compliance with contract
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    errors = exc.errors()
+    msg = "Bad request"
+    if errors:
+        first = errors[0]
+        raw_msg = first.get("msg", "Bad request")
+        if "Value error, " in raw_msg:
+            msg = raw_msg.replace("Value error, ", "")
+        elif "JSON decode error" in raw_msg or "json_invalid" in str(first.get("type", "")):
+            msg = "Malformed JSON body"
+        else:
+            msg = raw_msg
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
-        content={"detail": "Bad request", "errors": exc.errors()}
+        content={"detail": msg}
     )
 
 @app.get("/health", status_code=status.HTTP_200_OK)
@@ -51,66 +62,21 @@ async def list_runs():
     runs = get_all_runs()
     return runs
 
-@app.post("/api/runs", status_code=status.HTTP_201_CREATED)
-async def create_run(request: Request):
+@app.post("/api/runs", response_model=RunResponse, status_code=status.HTTP_201_CREATED)
+async def create_run(payload: RunCreate):
     """
     Contract: POST /api/runs with a valid body returns 201 and the stored object.
     A different execution_target, an unknown state, or a bad sandbox_name returns 400.
     """
-    try:
-        body = await request.json()
-    except Exception:
-        return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            content={"detail": "Malformed JSON body"}
-        )
-
-    # Validate required fields
-    required_fields = ["run_id", "sandbox_name", "problem_id", "state", "execution_target"]
-    for f in required_fields:
-        if f not in body or not isinstance(body[f], str):
-            return JSONResponse(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                content={"detail": f"Field '{f}' is required and must be a string"}
-            )
-
-    sandbox_name = body["sandbox_name"]
-    state = body["state"]
-    execution_target = body["execution_target"]
-
-    # Contract: sandbox_name matches sbx- plus 8 or more lowercase letters or digits
-    if not SANDBOX_NAME_REGEX.match(sandbox_name):
-        return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            content={"detail": "sandbox_name must match 'sbx-' followed by 8 or more lowercase letters or digits"}
-        )
-
-    # Contract: state in allowed set
-    if state not in ALLOWED_STATES:
-        return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            content={"detail": f"state must be one of {sorted(ALLOWED_STATES)}"}
-        )
-
-    # Contract: execution_target must be exactly 'celesto_sandbox'
-    if execution_target != "celesto_sandbox":
-        return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            content={"detail": "execution_target must be exactly 'celesto_sandbox'"}
-        )
-
     stored_row = insert_run({
-        "run_id": body["run_id"],
-        "sandbox_name": sandbox_name,
-        "problem_id": body["problem_id"],
-        "state": state,
-        "execution_target": execution_target
+        "run_id": payload.run_id,
+        "sandbox_name": payload.sandbox_name,
+        "problem_id": payload.problem_id,
+        "state": payload.state,
+        "execution_target": payload.execution_target
     })
 
-    return JSONResponse(
-        status_code=status.HTTP_201_CREATED,
-        content=stored_row
-    )
+    return stored_row
 
 # Optionally serve reports if directory exists
 if os.path.exists("reports"):

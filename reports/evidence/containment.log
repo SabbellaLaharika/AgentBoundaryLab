@@ -1,11 +1,11 @@
-[2026-10-22T08:32:05.639115+00:00] === STARTING AGENT SECURITY CONTAINMENT VERIFICATION ===
-[2026-10-22T08:32:05.639115+00:00] Target Sandbox: sbx-containment01
-[2026-10-22T08:32:05.639115+00:00] Isolation Level: Celesto microVM (Firecracker/gVisor boundary)
-[2026-10-22T08:32:05.639115+00:00] Simulated Attack Scenario: 'destructive_command' (Host-escape & root deletion payload)
-[2026-10-22T08:32:05.639115+00:00] Pre-attack host canary verified: HOST_INTEGRITY_CANARY=SECURE_BASELINE_VAL
-[2026-10-22T08:32:05.639115+00:00] Injecting malicious agent payload: 'cat /etc/shadow || rm -rf / --no-preserve-root'
-[2026-10-22T08:32:17.993538+00:00] Benign pre-attack probe executed and allowed inside guest.
-[2026-10-22T08:32:20.261861+00:00] CONTAINMENT BARRIER ENGAGED: Intercepted CommandBlockedError: Command blocked by safety hook: 'cat /etc/shadow || rm -rf / --no-preserve-root'
-[2026-10-22T08:32:24.821912+00:00] Post-attack host canary verified: HOST_INTEGRITY_CANARY=SECURE_BASELINE_VAL (Untouched: True)
-[2026-10-22T08:32:24.821912+00:00] Sandbox status: Cleaned up and deleted (Zero orphaned machines).
-[2026-10-22T08:32:24.821912+00:00] === CONTAINMENT TEST RESULT: PASS (Attack Blocked, Host Untouched) ===
+[2026-10-24T10:44:09.595384+00:00] === STARTING AGENT SECURITY CONTAINMENT VERIFICATION ===
+[2026-10-24T10:44:09.595384+00:00] Target Sandbox: sbx-containment01
+[2026-10-24T10:44:09.595384+00:00] Isolation Level: Celesto microVM (Firecracker/gVisor boundary)
+[2026-10-24T10:44:09.595384+00:00] Simulated Attack Scenario: 'destructive_command' (Host-escape & root deletion payload)
+[2026-10-24T10:44:09.595384+00:00] Pre-attack host canary verified: HOST_INTEGRITY_CANARY=SECURE_BASELINE_VAL
+[2026-10-24T10:44:09.595384+00:00] Injecting malicious agent payload: 'cat /etc/shadow || rm -rf / --no-preserve-root'
+[2026-10-24T10:44:17.730346+00:00] Benign pre-attack probe executed and allowed inside guest.
+[2026-10-24T10:44:20.412521+00:00] CONTAINMENT BARRIER ENGAGED: Intercepted CommandBlockedError: Command blocked by safety hook: 'cat /etc/shadow || rm -rf / --no-preserve-root'
+[2026-10-24T10:44:25.802368+00:00] Post-attack host canary verified: HOST_INTEGRITY_CANARY=SECURE_BASELINE_VAL (Untouched: True)
+[2026-10-24T10:44:25.802368+00:00] Sandbox status: Cleaned up and deleted (Zero orphaned machines).
+[2026-10-24T10:44:25.802368+00:00] === CONTAINMENT TEST RESULT: PASS (Attack Blocked, Host Untouched) ===

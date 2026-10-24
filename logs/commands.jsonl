@@ -67,3 +67,65 @@
 {"ts": "2026-10-22T15:08:02.524177+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T15:08:21.240734+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
 {"ts": "2026-10-22T15:08:39.880672+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:19:44.245772+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:20:02.944535+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-22T15:20:21.685905+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:06:29.312984+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:06:48.011429+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:07:06.716913+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:13:21.370105+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:13:40.050011+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:13:58.793127+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:27:15.433720+00:00", "sandbox_name": "sbx-containment01", "command": "echo 'Agent pre-attack check'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:27:17.711141+00:00", "sandbox_name": "sbx-containment01", "command": "cat /etc/shadow || rm -rf / --no-preserve-root", "decision": "block", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:28:49.921131+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "mkdir -p /workspace/detonation && cd /workspace/detonation", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:28:52.209140+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "git clone --depth 1 https://github.com/example-vuln/pkg /workspace/detonation/repo", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:28:54.495873+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "pip install --no-cache-dir -r /workspace/detonation/repo/requirements.txt", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:28:56.781263+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "python -m semgrep --config=auto --dry-run", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:28:59.049750+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "flake8 /workspace/detonation/repo --select=E9,F63,F7,F82", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:29:05.881114+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "celesto snapshot create --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:29:08.596758+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "python /workspace/detonation/repo/exploit_repro.py --detonate", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:29:10.865435+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "celesto snapshot rollback --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:29:13.140499+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "python -m pip install --upgrade safe-parser && patch -p1 < patch.diff", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T04:29:15.411537+00:00", "sandbox_name": "sbx-resiliencefad52066e4", "command": "python /workspace/detonation/repo/exploit_repro.py --verify-safe", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T05:25:22.568230+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T05:25:42.896973+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-23T05:26:03.262574+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:28:48.375196+00:00", "sandbox_name": "sbx-containment01", "command": "echo 'Agent pre-attack check'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:28:51.072704+00:00", "sandbox_name": "sbx-containment01", "command": "cat /etc/shadow || rm -rf / --no-preserve-root", "decision": "block", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:03.227968+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "mkdir -p /workspace/detonation && cd /workspace/detonation", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:05.935211+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "git clone --depth 1 https://github.com/example-vuln/pkg /workspace/detonation/repo", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:08.625041+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "pip install --no-cache-dir -r /workspace/detonation/repo/requirements.txt", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:11.327645+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "python -m semgrep --config=auto --dry-run", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:14.019159+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "flake8 /workspace/detonation/repo --select=E9,F63,F7,F82", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:16.729994+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "celesto snapshot create --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:19.440512+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "python /workspace/detonation/repo/exploit_repro.py --detonate", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:22.140799+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "celesto snapshot rollback --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:24.828199+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "python -m pip install --upgrade safe-parser && patch -p1 < patch.diff", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:30:27.527661+00:00", "sandbox_name": "sbx-resilienced2442cdabf", "command": "python /workspace/detonation/repo/exploit_repro.py --verify-safe", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:31:41.915048+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:31:58.166179+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T09:32:14.403061+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:41:49.308663+00:00", "sandbox_name": "sbx-containment01", "command": "echo 'Agent pre-attack check'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:41:52.000793+00:00", "sandbox_name": "sbx-containment01", "command": "cat /etc/shadow || rm -rf / --no-preserve-root", "decision": "block", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:44:17.729352+00:00", "sandbox_name": "sbx-containment01", "command": "echo 'Agent pre-attack check'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:44:20.411511+00:00", "sandbox_name": "sbx-containment01", "command": "cat /etc/shadow || rm -rf / --no-preserve-root", "decision": "block", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:16.246313+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "mkdir -p /workspace/detonation && cd /workspace/detonation", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:18.958385+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "git clone --depth 1 https://github.com/example-vuln/pkg /workspace/detonation/repo", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:21.684984+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "pip install --no-cache-dir -r /workspace/detonation/repo/requirements.txt", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:24.396734+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "python -m semgrep --config=auto --dry-run", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:27.143314+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "flake8 /workspace/detonation/repo --select=E9,F63,F7,F82", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:29.865269+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "celesto snapshot create --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:32.584495+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "python /workspace/detonation/repo/exploit_repro.py --detonate", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:35.284673+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "celesto snapshot rollback --id=snap-pre-detonation-v1", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:37.974113+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "python -m pip install --upgrade safe-parser && patch -p1 < patch.diff", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:50:40.661074+00:00", "sandbox_name": "sbx-resiliencefa75aa7994", "command": "python /workspace/detonation/repo/exploit_repro.py --verify-safe", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:56:00.594212+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:56:16.931683+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:56:33.234532+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:57:30.509933+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:57:46.787513+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:58:03.052402+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:59:10.209109+00:00", "sandbox_name": "sbx-lifecycle01", "command": "echo 'lifecycle success probe'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:59:26.463479+00:00", "sandbox_name": "sbx-lifecycle02", "command": "python -c 'import sys; sys.exit(0)'", "decision": "allow", "execution_target": "celesto_sandbox"}
+{"ts": "2026-10-24T10:59:42.732480+00:00", "sandbox_name": "sbx-lifecycle03", "command": "sleep 10", "decision": "allow", "execution_target": "celesto_sandbox"}

@@ -6,11 +6,11 @@ ALLOWED_STATES = {"created", "ready", "running", "succeeded", "failed", "deleted
 SANDBOX_NAME_REGEX = re.compile(r"^sbx-[a-z0-9]{8,}$")
 
 class RunCreate(BaseModel):
-    run_id: str = Field(..., min_length=1)
-    sandbox_name: str
-    problem_id: str = Field(..., min_length=1)
-    state: str
-    execution_target: str
+    run_id: str = Field(..., min_length=1, json_schema_extra={"example": "run-demo01"})
+    sandbox_name: str = Field(..., json_schema_extra={"example": "sbx-demo01ab"})
+    problem_id: str = Field(..., min_length=1, json_schema_extra={"example": "vuln-repro"})
+    state: str = Field(..., json_schema_extra={"example": "running"})
+    execution_target: str = Field(..., json_schema_extra={"example": "celesto_sandbox"})
 
     @field_validator("sandbox_name")
     def validate_sandbox_name(cls, v: str) -> str:
