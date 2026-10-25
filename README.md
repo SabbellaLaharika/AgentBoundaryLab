@@ -244,10 +244,8 @@ A 3-minute video walkthrough demonstrating:
 
 is available at:
 👉 **Demo Link**: [demo/walkthrough.mp4](demo/walkthrough.mp4)  
-👉 **Google Drive Folder**: [Watch on Google Drive](https://drive.google.com/drive/folders/1VpalHGNwLOx8aScXCwpNhdp7RPWU_dTt)
-
-> [!NOTE]
-> The final video walkthrough recording will be uploaded to the drive folder and repository by the end of the day.
+👉 **Google Drive Folder**: [Watch on Google Drive](https://drive.google.com/drive/folders/1VpalHGNwLOx8aScXCwpNhdp7RPWU_dTt)  
+👉 **Docker Hub Image**: [sabbellalaharika/agentboundarylab](https://hub.docker.com/r/sabbellalaharika/agentboundarylab)
 
 ---
 
